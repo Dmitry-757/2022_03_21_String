@@ -23,6 +23,7 @@ public class dz51_2 {
             sb.append(counter);
             counter++;
         }
+
         sb.delete(maxCount, sb.length());
         System.out.println(" original string is: " + sb.toString());
 
