@@ -24,19 +24,18 @@ public class dz51_2 {
             counter++;
         }
         sb.delete(maxCount, sb.length());
-        System.out.println(" original string is: "+sb.toString());
+        System.out.println(" original string is: " + sb.toString());
 
-        try(Scanner sc = new Scanner(System.in)){
+        try (Scanner sc = new Scanner(System.in)) {
             int pos = 0;
             System.out.println("Enter position of char");
-            if(sc.hasNextInt()){
+            if (sc.hasNextInt()) {
                 pos = sc.nextInt();
-                if ((pos<0)||(pos>maxCount)) {
-                    throw new Exception("position must be between 0 and "+maxCount);
+                if ((pos < 0) || (pos > maxCount)) {
+                    throw new Exception("position must be between 0 and " + maxCount);
                 }
-                System.out.println("The char on "+pos+"-th position is "+sb.charAt(pos-1));
-            }
-            else {
+                System.out.println("The char on " + pos + "-th position is " + sb.charAt(pos - 1));
+            } else {
                 throw new Exception("Wrong input!");
             }
 
