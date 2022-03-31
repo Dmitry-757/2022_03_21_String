@@ -1,6 +1,7 @@
 package org.dng;
 
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,13 +24,13 @@ import java.util.stream.Collectors;
 public class dz51_9 {
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(System.in)) {
-            System.out.println("Enter sentence 1");
+            System.out.println("Enter first sentence:");
             String str1="", str2="";
             if (sc.hasNextLine()) {
                 str1 = sc.nextLine();
             }
 
-            System.out.println("Enter sentence 2");
+            System.out.println("Enter second sentence:");
             if (sc.hasNextLine()) {
                 str2 = sc.nextLine();
             }
@@ -57,8 +58,8 @@ public class dz51_9 {
             String word;
             while (matcher.find()) {
                 word = matcher.group();
-                System.out.println(word);
-                word1[counterWords] = word;
+//                System.out.println(word);
+                word1[counterWords] = word.toLowerCase();
                 counterWords++;
             }
 
@@ -67,19 +68,15 @@ public class dz51_9 {
             counterWords = 0;
             while (matcher2.find()) {
                 word = matcher2.group();
-                System.out.println(word);
-                word2[counterWords] = word;
+//                System.out.println(word);
+                word2[counterWords] = word.toLowerCase();
                 counterWords++;
             }
+//            System.out.println(Arrays.stream(word1).collect(Collectors.toList()));
+//            System.out.println(Arrays.stream(word2).collect(Collectors.toList()));
 
-            System.out.println(Arrays.stream(word1).collect(Collectors.toList()));
-            System.out.println(Arrays.stream(word2).collect(Collectors.toList()));
-
-
-
-            boolean findSuitWord;
+            boolean findSuitWord = true;
             for (String w:word1) {
-
                 for (String w2:word2) {
                     findSuitWord = true; //let`s hope that w2 is suitable for w
                     if(w.length() == w2.length()){
@@ -90,14 +87,21 @@ public class dz51_9 {
                             }
                         }
                     }
+                    else{ //number of letters in word w is not equal number of letter in word w2. Need to skip this word
+                        findSuitWord = false;
+                    }
+
                     if(findSuitWord){
-                        System.out.println("word = "+w+"  word2 = "+w2);
+                        System.out.println("word = "+w+"  it`s pair = "+w2);
                         break; //find suitable word2 for word
                     }
                 }
-
+                if(!findSuitWord){
+                    System.out.println("for word \""+w+"\" absent suitable pare! The sentences can`t be anagrams!");
+                    break;
+                }
             }
-
+            System.out.println("If i am not mistaken, this sentaces are anagram");
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
