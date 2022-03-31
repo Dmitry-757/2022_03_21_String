@@ -8,24 +8,24 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
- Написать программу, проверяющую является ли одна
- строка анаграммой для другой строки (строка может состоять
- из нескольких слов и символов пунктуации). Пробелы и
- пунктуация должны игнорироваться при анализе. Разница
- в больших и маленьких буквах должна игнорироваться. Обе
- строки должны вводиться с клавиатуры. Программа должна
- выводить Yes, если строки являются анаграммой, и No –
- иначе.
- Пример анаграммы в стихах:
- Строка 1 «Аз есмь строка, живу я, мерой остр».
- Строка 2 «За семь морей ростка я вижу рост!»
+ * Написать программу, проверяющую является ли одна
+ * строка анаграммой для другой строки (строка может состоять
+ * из нескольких слов и символов пунктуации). Пробелы и
+ * пунктуация должны игнорироваться при анализе. Разница
+ * в больших и маленьких буквах должна игнорироваться. Обе
+ * строки должны вводиться с клавиатуры. Программа должна
+ * выводить Yes, если строки являются анаграммой, и No –
+ * иначе.
+ * Пример анаграммы в стихах:
+ * Строка 1 «Аз есмь строка, живу я, мерой остр».
+ * Строка 2 «За семь морей ростка я вижу рост!»
  */
 
 public class dz51_9 {
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(System.in)) {
             System.out.println("Enter first sentence:");
-            String str1="", str2="";
+            String str1 = "", str2 = "";
             if (sc.hasNextLine()) {
                 str1 = sc.nextLine();
             }
@@ -48,7 +48,8 @@ public class dz51_9 {
             while (matcher2.find()) {
                 counterWords2++;
             }
-            if(counterWords != counterWords2) throw new Exception("number of words in 1-th sentence is not equal number of words in second sentence!");
+            if (counterWords != counterWords2)
+                throw new Exception("number of words in 1-th sentence is not equal number of words in second sentence!");
 
             matcher = pattern.matcher(str1);
             matcher2 = pattern.matcher(str2);
@@ -76,28 +77,27 @@ public class dz51_9 {
 //            System.out.println(Arrays.stream(word2).collect(Collectors.toList()));
 
             boolean findSuitWord = true;
-            for (String w:word1) { //take word from first sentence and compare it with all words from second sentence
-                for (String w2:word2) { //take word from second sentence for comparison
+            for (String w : word1) { //take word from first sentence and compare it with all words from second sentence
+                for (String w2 : word2) { //take word from second sentence for comparison
                     findSuitWord = true; //let`s hope that w2 is suitable for w
-                    if(w.length() == w2.length()){
+                    if (w.length() == w2.length()) {
                         for (int i = 0; i < w.length(); i++) {
-                            if (!w2.contains(String.valueOf(w.charAt(i)) ) ){ //if letter of word1 does not occur in word2
+                            if (!w2.contains(String.valueOf(w.charAt(i)))) { //if letter of word1 does not occur in word2
                                 findSuitWord = false;//Ooops, such letter doesn`t occur in word2 - word2 isn`t pair for w!
                                 break;
                             }
                         }
-                    }
-                    else{ //number of letters in word w is not equal number of letter in word w2. Need to skip this word
+                    } else { //number of letters in word w is not equal number of letter in word w2. Need to skip this word
                         findSuitWord = false;
                     }
 
-                    if(findSuitWord){
-                        System.out.println("word = "+w+"  it`s pair = "+w2);
+                    if (findSuitWord) {
+                        System.out.println("word = " + w + "  it`s pair = " + w2);
                         break; //find suitable word2 for word
                     }
                 }
-                if(!findSuitWord){
-                    System.out.println("for word \""+w+"\" absent suitable pare! The sentences can`t be anagrams!");
+                if (!findSuitWord) {
+                    System.out.println("for word \"" + w + "\" absent suitable pare! The sentences can`t be anagrams!");
                     break;
                 }
             }

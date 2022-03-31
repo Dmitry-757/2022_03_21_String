@@ -17,7 +17,7 @@ public class dz51_2 {
 
         StringBuilder sb = new StringBuilder();
 
-        int maxCount = 20;
+        int maxCount = 1000;
         int counter = 1;
         while (sb.length() < maxCount) {
             sb.append(counter);
@@ -32,8 +32,8 @@ public class dz51_2 {
             System.out.println("Enter position of char");
             if (sc.hasNextInt()) {
                 pos = sc.nextInt();
-                if ((pos < 0) || (pos > maxCount)) {
-                    throw new Exception("position must be between 0 and " + maxCount);
+                if ((pos < 1) || (pos > maxCount)) {
+                    throw new Exception("position must be between 1 and " + maxCount);
                 }
                 System.out.println("The char on " + pos + "-th position is " + sb.charAt(pos - 1));
             } else {

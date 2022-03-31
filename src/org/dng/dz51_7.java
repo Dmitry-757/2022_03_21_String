@@ -6,9 +6,9 @@ import java.util.regex.Pattern;
 
 /**
  * Пользователь вводит с клавиатуры любую строку.
- * Поменять в исходной строке все большие буквы на
- * маленькие, а маленькие – на большие. Если в строке присутствуют цифры, заменить на символ подчеркивания и
- * вывести результат на консоль.
+ * Поменять в исходной строке все большие буквы на маленькие,
+ * а маленькие – на большие. Если в строке присутствуют цифры,
+ * заменить на символ подчеркивания и вывести результат на консоль.
  */
 
 
@@ -30,7 +30,8 @@ public class dz51_7 {
                 Pattern pattern = Pattern.compile("[A-ZА-Яa-zа-я]");
                 Matcher matcher = pattern.matcher(str);
                 str = matcher.replaceAll((match) -> Revers(match.group()));
-                System.out.println("The reversed sentence is : " + str);
+                str = str.replaceAll("[\\d]","_");
+                System.out.println("The processed sentence is : " + str);
             }
         }
 

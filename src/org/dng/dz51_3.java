@@ -22,7 +22,7 @@ public class dz51_3 {
                 String word;
                 while (matcher.find()) {
                     word = matcher.group();
-                    System.out.println(word);
+//                    System.out.println(word);
                     counterWords++;
                     counterLetters += word.length();
                 }
