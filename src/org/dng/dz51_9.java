@@ -76,13 +76,13 @@ public class dz51_9 {
 //            System.out.println(Arrays.stream(word2).collect(Collectors.toList()));
 
             boolean findSuitWord = true;
-            for (String w:word1) {
-                for (String w2:word2) {
+            for (String w:word1) { //take word from first sentence and compare it with all words from second sentence
+                for (String w2:word2) { //take word from second sentence for comparison
                     findSuitWord = true; //let`s hope that w2 is suitable for w
                     if(w.length() == w2.length()){
                         for (int i = 0; i < w.length(); i++) {
                             if (!w2.contains(String.valueOf(w.charAt(i)) ) ){ //if letter of word1 does not occur in word2
-                                findSuitWord = false;
+                                findSuitWord = false;//Ooops, such letter doesn`t occur in word2 - word2 isn`t pair for w!
                                 break;
                             }
                         }
